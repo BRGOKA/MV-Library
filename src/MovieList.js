@@ -6,6 +6,9 @@ export function MovieList({ setTitle, movies, setSelectedId }) {
     setTitle(movie.Title);
   }
 
+  if (!movies.length)
+    return <h1 className="noSearch">Please search for a movie</h1>;
+
   return (
     <ul className="list list-movies">
       {movies?.map((movie) => (

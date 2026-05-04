@@ -93,6 +93,12 @@ body {
   font-weight: 600;
   color: #fff;
 }
+.noSearch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
 
 .search {
   justify-self: center;
