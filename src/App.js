@@ -14,19 +14,20 @@ export default function App() {
   const [selectedId, setSelectedId] = useState("");
   const [title, setTitle] = useState("");
   const [showType, setShowType] = useState("");
-  const [isWatching, setIsWatching] = useState(true);
+  const [isWatching, setIsWatching] = useState(false);
+
   const { movies, isLoading, error } = useMovie(Key, query);
 
   useEffect(() => {
-    window.addEventListener("keypress", function (e) {
-      if (e.Key === "Escape") setIsWatching(false);
-    });
-    console.log(isWatching);
+    function handleKeyDown(e) {
+      if (e.key === "Escape") {
+        setIsWatching(false);
+      }
+    }
 
-    return window.removeEventListener("keypress", (e) => {
-      if (e.key === "Escape") setIsWatching(false);
-    });
-  }, [isWatching, setIsWatching]);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [setIsWatching]);
 
   useEffect(
     function () {
@@ -41,9 +42,15 @@ export default function App() {
   );
   return (
     <>
-      {isWatching && (
-        <WatchMovie title={title} id={selectedId} type={showType} />
-      )}
+      {
+        <WatchMovie
+          isWatching={isWatching}
+          setIsWatching={setIsWatching}
+          title={title}
+          id={selectedId}
+          type={showType}
+        />
+      }
       <Nav movies={movies} query={query} setQuery={setQuery} />
       <Main
         movies={movies}
