@@ -64,12 +64,25 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0;
+  gap: 1rem;
 }
-.ep-selector input {
-  width: 3rem;
-  height: 2rem;
-  padding: 0.5rem;
+.ep-selector input,
+.ep-selector .season-toggle {
+  min-width: 10rem;
+}
+
+.episode-input {
+  background-color: var(--color-background-900);
+  color: var(--color-text);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10rem;
+  padding: 1rem 1.4rem;
+  font-size: 1.4rem;
+  width: 10rem;
+}
+
+.episode-input:focus {
+  outline: 2px solid rgba(103, 65, 217, 0.6);
 }
 
 .dropdown-menu {
@@ -81,7 +94,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1rem;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.25);
-  padding: 0.8rem 0;
+  padding: 0.6rem 0;
   z-index: 10;
 }
 

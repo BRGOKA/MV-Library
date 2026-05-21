@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 export function MovieList({ setTitle, movies, setSelectedId }) {
   function handleclick(movie) {
     setSelectedId(movie.imdbID);
@@ -7,7 +5,7 @@ export function MovieList({ setTitle, movies, setSelectedId }) {
   }
 
   if (!movies.length)
-    return <h1 className="noSearch">Please search for a movie</h1>;
+    return <h1 className="noSearch">Please search for a show</h1>;
 
   return (
     <ul className="list list-movies">

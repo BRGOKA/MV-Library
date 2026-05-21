@@ -15,6 +15,8 @@ export default function App() {
   const [title, setTitle] = useState("");
   const [showType, setShowType] = useState("");
   const [isWatching, setIsWatching] = useState(false);
+  const [season, setSeason] = useState(1);
+  const [episode, setEpisode] = useState(1);
 
   const { movies, isLoading, error } = useMovie(Key, query);
 
@@ -44,6 +46,8 @@ export default function App() {
     <>
       {
         <WatchMovie
+          season={season}
+          episode={episode}
           isWatching={isWatching}
           setIsWatching={setIsWatching}
           title={title}
@@ -61,6 +65,10 @@ export default function App() {
         setTitle={setTitle}
         setShowType={setShowType}
         setIsWatching={setIsWatching}
+        season={season}
+        setSeason={setSeason}
+        episode={episode}
+        setEpisode={setEpisode}
       />
     </>
   );
@@ -75,6 +83,10 @@ function Main({
   setSelectedId,
   setShowType,
   setIsWatching,
+  season,
+  setSeason,
+  episode,
+  setEpisode,
 }) {
   const [watched, setWatched] = useLocalStorage([], "watched");
 
@@ -107,6 +119,10 @@ function Main({
             handleWatched={handleWatched}
             isWatched={isWatched}
             setIsWatching={setIsWatching}
+            season={season}
+            setSeason={setSeason}
+            episode={episode}
+            setEpisode={setEpisode}
           />
         ) : (
           <WatchList

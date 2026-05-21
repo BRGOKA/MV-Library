@@ -5,14 +5,14 @@ function WatchMovie({
   id,
   type,
   season = 1,
-  ep = 1,
+  episode = 1,
 }) {
   if (!isWatching) return;
   let url;
   if (type === "movie") {
     url = `https://vaplayer.ru/embed/movie/${id}`;
   } else if (type === "series") {
-    url = `https://vaplayer.ru/embed/tv/${id}/${season}/${ep}`;
+    url = `https://vaplayer.ru/embed/tv/${id}/${season}/${episode}`;
   }
   return (
     isWatching && (

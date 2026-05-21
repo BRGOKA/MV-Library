@@ -11,6 +11,10 @@ export function MovieDetails({
   isWatched,
   setShowType,
   setIsWatching,
+  season,
+  setSeason,
+  episode,
+  setEpisode,
 }) {
   const [movieDetails, setMovieDetails] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -102,6 +106,10 @@ export function MovieDetails({
                 type={movieDetails.Type}
                 id={selectedID}
                 title={movieDetails.Title}
+                season={season}
+                setSeason={setSeason}
+                episode={episode}
+                setEpisode={setEpisode}
               />
             </div>
             <p>
