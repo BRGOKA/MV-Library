@@ -5,6 +5,7 @@ import { WatchList } from "./WatchList";
 import { MovieDetails } from "./MovieDetails";
 import { useMovie } from "./useMovie";
 import { useLocalStorage } from "./useLocalStorage";
+import WatchMovie from "./WatchMovie";
 
 export const Key = "fc7f988";
 
@@ -12,8 +13,20 @@ export default function App() {
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState("");
   const [title, setTitle] = useState("");
-
+  const [showType, setShowType] = useState("");
+  const [isWatching, setIsWatching] = useState(true);
   const { movies, isLoading, error } = useMovie(Key, query);
+
+  useEffect(() => {
+    window.addEventListener("keypress", function (e) {
+      if (e.Key === "Escape") setIsWatching(false);
+    });
+    console.log(isWatching);
+
+    return window.removeEventListener("keypress", (e) => {
+      if (e.key === "Escape") setIsWatching(false);
+    });
+  }, [isWatching, setIsWatching]);
 
   useEffect(
     function () {
@@ -28,6 +41,9 @@ export default function App() {
   );
   return (
     <>
+      {isWatching && (
+        <WatchMovie title={title} id={selectedId} type={showType} />
+      )}
       <Nav movies={movies} query={query} setQuery={setQuery} />
       <Main
         movies={movies}
@@ -36,6 +52,8 @@ export default function App() {
         selectedID={selectedId}
         setSelectedId={setSelectedId}
         setTitle={setTitle}
+        setShowType={setShowType}
+        setIsWatching={setIsWatching}
       />
     </>
   );
@@ -48,6 +66,8 @@ function Main({
   error,
   selectedID,
   setSelectedId,
+  setShowType,
+  setIsWatching,
 }) {
   const [watched, setWatched] = useLocalStorage([], "watched");
 
@@ -74,10 +94,12 @@ function Main({
           <MovieDetails
             watched={watched}
             setWatched={setWatched}
+            setShowType={setShowType}
             setSelectedId={setSelectedId}
             selectedID={selectedID}
             handleWatched={handleWatched}
             isWatched={isWatched}
+            setIsWatching={setIsWatching}
           />
         ) : (
           <WatchList

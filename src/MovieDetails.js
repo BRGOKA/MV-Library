@@ -9,6 +9,8 @@ export function MovieDetails({
   selectedID,
   setSelectedId,
   isWatched,
+  setShowType,
+  setIsWatching,
 }) {
   const [movieDetails, setMovieDetails] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -45,7 +47,6 @@ export function MovieDetails({
           );
           if (!res.ok) throw new Error("failed to fetch movie");
           const data = await res.json();
-          console.log(data);
           if (data.Response === "False") throw new Error("Movie not found");
           setMovieDetails(data);
           setIsLoading(false);
@@ -58,6 +59,10 @@ export function MovieDetails({
     },
     [selectedID],
   );
+
+  useEffect(() => {
+    setShowType(movieDetails.Type);
+  }, [movieDetails.Type, setShowType]);
 
   return (
     <div className="details">
@@ -90,7 +95,12 @@ export function MovieDetails({
               <button className="btn-add" onClick={handleWatchBtn}>
                 {isWatched ? "- remove from watched" : "+ Add to watched"}
               </button>
-              <Button type={movieDetails.Type} id={selectedID} />
+              <Button
+                setIsWatching={setIsWatching}
+                type={movieDetails.Type}
+                id={selectedID}
+                title={movieDetails.Title}
+              />
             </div>
             <p>
               <em>{movieDetails.Plot}</em>

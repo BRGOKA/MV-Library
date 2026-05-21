@@ -1,6 +1,6 @@
-function Button({ type, id }) {
+function Button({ setIsWatching, title, type, id }) {
   function handleWatch() {
-    console.log(id);
+    setIsWatching(true);
   }
   return (
     <button className="btn-add" onClick={handleWatch}>
