@@ -44,6 +44,7 @@ export function MovieDetails({
           );
           if (!res.ok) throw new Error("failed to fetch movie");
           const data = await res.json();
+          console.log(data);
           if (data.Response === "False") throw new Error("Movie not found");
           setMovieDetails(data);
           setIsLoading(false);
@@ -73,6 +74,7 @@ export function MovieDetails({
             />
             <div className="details-overview">
               <h2>{movieDetails.Title}</h2>
+              <p>{movieDetails.Type}</p>
               <p>
                 {movieDetails.Released} &bull; {movieDetails.Runtime}
               </p>
