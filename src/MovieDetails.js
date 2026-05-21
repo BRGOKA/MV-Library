@@ -49,6 +49,7 @@ export function MovieDetails({
           const data = await res.json();
           if (data.Response === "False") throw new Error("Movie not found");
           setMovieDetails(data);
+          console.log(data);
           setIsLoading(false);
         } catch (err) {
           console.error(err.message);
@@ -96,6 +97,7 @@ export function MovieDetails({
                 {isWatched ? "- remove from watched" : "+ Add to watched"}
               </button>
               <Button
+                seasons={movieDetails.totalSeasons}
                 setIsWatching={setIsWatching}
                 type={movieDetails.Type}
                 id={selectedID}
