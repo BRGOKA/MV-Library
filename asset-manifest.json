@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/MV-Library/static/css/main.09910cdb.css",
+    "main.js": "/MV-Library/static/js/main.bb20299a.js",
+    "index.html": "/MV-Library/index.html",
+    "main.09910cdb.css.map": "/MV-Library/static/css/main.09910cdb.css.map",
+    "main.bb20299a.js.map": "/MV-Library/static/js/main.bb20299a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.09910cdb.css",
+    "static/js/main.bb20299a.js"
+  ]
+}
