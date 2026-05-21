@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Key, Loader } from "./App";
+import Button from "./Button";
 
 export function MovieDetails({
   watched,
@@ -89,6 +90,7 @@ export function MovieDetails({
               <button className="btn-add" onClick={handleWatchBtn}>
                 {isWatched ? "- remove from watched" : "+ Add to watched"}
               </button>
+              <Button type={movieDetails.Type} id={selectedID} />
             </div>
             <p>
               <em>{movieDetails.Plot}</em>
