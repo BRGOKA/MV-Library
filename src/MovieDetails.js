@@ -76,7 +76,14 @@ export function MovieDetails({
       ) : (
         <>
           <header>
-            <button className="btn-back" onClick={() => setSelectedId(null)}>
+            <button
+              className="btn-back"
+              onClick={() => {
+                setSelectedId(null);
+                setSeason(1);
+                setEpisode(1);
+              }}
+            >
               &larr;
             </button>
             <img

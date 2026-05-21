@@ -33,7 +33,7 @@ export function Nav({ movies, query, setQuery }) {
       <input
         className="search"
         type="text"
-        placeholder="Search movies..."
+        placeholder="Search Shows..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         onKeyDown={(e) => fetchMovies(e, query)}
