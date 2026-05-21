@@ -10,7 +10,7 @@ function WatchMovie({
   if (!isWatching) return;
   return (
     isWatching && (
-      <>
+      <div onClick={() => setIsWatching(false)}>
         <button className="close_player" onClick={() => setIsWatching(false)}>
           x
         </button>
@@ -24,7 +24,7 @@ function WatchMovie({
           frameborder="0"
           allowfullscreen
         ></iframe>
-      </>
+      </div>
     )
   );
 }
