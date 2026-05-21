@@ -6,6 +6,7 @@ import { MovieDetails } from "./MovieDetails";
 import { useMovie } from "./useMovie";
 import { useLocalStorage } from "./useLocalStorage";
 import WatchMovie from "./WatchMovie";
+import { useKey } from "./useKey";
 
 export const Key = "fc7f988";
 
@@ -20,16 +21,9 @@ export default function App() {
 
   const { movies, isLoading, error } = useMovie(Key, query);
 
-  useEffect(() => {
-    function handleKeyDown(e) {
-      if (e.key === "Escape") {
-        setIsWatching(false);
-      }
-    }
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [setIsWatching]);
+  useKey("Escape", function () {
+    setIsWatching(false);
+  });
 
   useEffect(
     function () {
